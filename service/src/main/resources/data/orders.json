@@ -1,0 +1,50 @@
+[
+  {
+    "customer": {
+      "name": "Customer A",
+      "surname": "A",
+      "age": 18,
+      "email": "aaa@gmail.com"
+    },
+    "product": {
+      "name": "Product A",
+      "price": 10.10,
+      "category": "A"
+
+    },
+    "orderDate": "2000-12-12",
+    "quantity": 10
+  },
+  {
+    "customer": {
+      "name": "Customer B",
+      "surname": "B",
+      "age": 21,
+      "email": "bbb@gmail.com"
+    },
+    "product": {
+      "name": "Product B",
+      "price": 20.10,
+      "category": "B"
+
+    },
+    "orderDate": "2001-01-10",
+    "quantity": 50
+  },
+  {
+    "customer": {
+      "name": "Customer C",
+      "surname": "C",
+      "age": 31,
+      "email": "ccc@gmail.com"
+    },
+    "product": {
+      "name": "Product C",
+      "price": 30.10,
+      "category": "C"
+
+    },
+    "orderDate": "2002-10-10",
+    "quantity": 30
+  }
+]

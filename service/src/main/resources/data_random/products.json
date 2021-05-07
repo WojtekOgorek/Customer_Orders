@@ -1,0 +1,23 @@
+[
+  {
+    "product": {
+      "name": "Rnd Product A",
+      "price": 10.10,
+      "category": "A"
+    }
+  },
+  {
+    "product": {
+      "name": "Rnd Product B",
+      "price": 20.10,
+      "category": "B"
+    }
+  },
+  {
+    "product": {
+      "name": "Rnd Product C",
+      "price": 30.10,
+      "category": "C"
+    }
+  }
+]
