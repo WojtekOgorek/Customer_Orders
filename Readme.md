@@ -6,6 +6,7 @@ emails to customers, generating random products, customers and whole orders from
 ## Installation
 
 Use maven -> [link](https://maven.apache.org/download.cgi) <- to install customer orders.
+You need to add file paths to json paths to the filename variables. 
 
 ```bash
 #main folder
