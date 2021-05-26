@@ -1,5 +1,6 @@
 package ogorek.wojciech.ui;
 
+import ogorek.wojciech.service.services.EmailService;
 import ogorek.wojciech.service.services.OrdersService;
 import ogorek.wojciech.service.utils.DataGenerator;
 
@@ -10,7 +11,6 @@ public class App {
 
 
     public static void main(String[] args) {
-//        EmailService.send("ogorkao@gmail.com", "Test Message", "<h1>Hello World</h1>");
 
         String file = "<filepath_to_main_orders_json>orders.json";
         String file2 = "<filepath_to_main_orders2_json>\\orders2.json";

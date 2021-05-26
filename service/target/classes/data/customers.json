@@ -1,0 +1,26 @@
+[
+  {
+    "customer": {
+      "name": "Customer A",
+      "surname": "A",
+      "age": 18,
+      "email": "aaa@gmail.com"
+    }
+  },
+  {
+    "customer": {
+      "name": "Customer B",
+      "surname": "B",
+      "age": 21,
+      "email": "bbb@gmail.com"
+    }
+  },
+  {
+    "customer": {
+      "name": "Customer C",
+      "surname": "C",
+      "age": 31,
+      "email": "ccc@gmail.com"
+    }
+  }
+]

@@ -2,27 +2,29 @@ package ogorek.wojciech.service.services;
 
 import ogorek.wojciech.persistence.exception.AppException;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public final class EmailService {
-    public EmailService() {}
+    public EmailService() {
+    }
 
-    private static final String EMAIL_ADDRESS = "<email_address_of_sender>";
-    private static final String EMAIL_PASSWORD = "<email_password>";
+    private static final String EMAIL_ADDRESS = "<sender_email>";
+    private static final String EMAIL_PASSWORD = "<password>";
 
     public static void send(String to, String title, String html) {
-
-        System.out.println("SENDING EMAIL MESSAGE ...");
-        Session session = createSession();
-        MimeMessage mimeMessage = new MimeMessage(session);
-        prepareEmailMessage(mimeMessage, to, title, html);
-        System.out.println("EMAIL MESSAGE HAS BEEN SENT ...");
+        try {
+            System.out.println("SENDING EMAIL MESSAGE ...");
+            Session session = createSession();
+            MimeMessage mimeMessage = new MimeMessage(session);
+            prepareEmailMessage(mimeMessage, to, title, html);
+            Transport.send(mimeMessage);
+            System.out.println("EMAIL MESSAGE HAS BEEN SENT ...");
+        } catch (Exception e) {
+            throw new AppException("Sending an email failed " + e.getMessage());
+        }
 
     }
 

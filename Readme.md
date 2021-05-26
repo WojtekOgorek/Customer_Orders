@@ -29,10 +29,7 @@ java -jar --enable-preview ui.jar
  *
  */
 public class MenuService {
-
-    private final OrdersService ordersService;
-    private final DataGenerator dataGenerator;
-
+    
     public void mainMenu() {
         while (true) {
             try {
@@ -79,98 +76,9 @@ public class MenuService {
         System.out.println("11.Get sheet with amount of products that was ordered in certain month.");
         System.out.println("12.Generate user order.");
         System.out.println("13.Generate random order.");
-
         System.out.println("14.Exit");
 
         return UserDataService.getInt("Choose option");
     }
 }
-public class example() {
-    
-    /*
-     *
-     *    ----------  SEND EMAIL TO USER WITH HIS ORDER ----------
-     *
-     */
-
-    public void orderToMail(String email) {
-        if (Objects.isNull(email)) {
-            throw new AppException("Email object is invalid");
-        }
-
-        String customerProducts = clientsOrder()
-                .entrySet()
-                .stream()
-                .filter(address -> address.getKey().getEmail().equals(email))
-                .map(Map.Entry::getValue)
-                .collect(Collectors.joining(","));
-
-
-        EmailService.send(email, "Order", htmlProducts(customerProducts));
-    }
-
-    public boolean isThereEmail(String email) {
-        if (customerOrders.stream().noneMatch(mail -> mail.getCustomer().getEmail().equals(email))) {
-            System.out.println("no email in db");
-            return false;
-        }
-        return true;
-    }
-
-    private String htmlProducts(String products) {
-        return body(h1(products)).render();
-    }
-
-    private Map<Customer, String> clientsOrder() {
-        return customerOrders
-                .stream()
-                .collect(Collectors.groupingBy(Order::getCustomer))
-                .entrySet()
-                .stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, this::clientsProducts));
-    }
-
-    private String clientsProducts(Map.Entry<Customer, List<Order>> entry) {
-        return entry
-                .getValue()
-                .stream()
-                .map(p -> p.getProduct().getName())
-                .collect(Collectors.joining(", "));
-    }
-    
-    /*
-     *
-     *    ----------  GET DATE WITH MIN QUANTITY ORDER ----------
-     *
-     */
-
-    public Map<LocalDate, Integer> minQuantityLocalDate() {
-
-        return datesWithOrders()
-                .entrySet()
-                .stream()
-                .min(Map.Entry.comparingByValue())
-                .stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
-
-    private Map<LocalDate, Integer> datesWithOrders() {
-        return customerOrders
-                .stream()
-                .collect(Collectors.groupingBy(Order::getOrderDate))
-                .entrySet()
-                .stream()
-                .collect(Collectors.groupingBy(Map.Entry::getKey,
-                        Collectors.collectingAndThen(
-                                Collectors.mapping(value -> value.getValue().stream().count(), Collectors.toList()),
-                                items -> items
-                                        .stream()
-                                        .max(Long::compareTo)
-                                        .map(Long::intValue)
-                                        .orElseThrow()))
-                );
-    }
-}
-
-
 ```
